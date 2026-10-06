@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cucct16l5jp5x"]
+
+[ext_resource type="Script" uid="uid://gotrluo3cp2b" path="res://alvo.gd" id="1_npyt8"]
+[ext_resource type="Texture2D" uid="uid://cysixl6h6igvq" path="res://arte/tilemap_packed.png" id="2_8cu02"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0ueq"]
+atlas = ExtResource("2_8cu02")
+region = Rect2(272, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ni86s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0ueq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2vq5"]
+size = Vector2(14, 16)
+
+[node name="Alvo" type="Area2D" unique_id=914499801]
+script = ExtResource("1_npyt8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1314963857]
+sprite_frames = SubResource("SpriteFrames_ni86s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2138556006]
+shape = SubResource("RectangleShape2D_q2vq5")
+
+[node name="Label" type="Label" parent="." unique_id=1027367925]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Parabens!"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
